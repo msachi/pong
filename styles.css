@@ -1,0 +1,44 @@
+body {
+  background: rgb(70,160,126);
+  overflow: hidden;
+}
+
+#left-paddle, #right-paddle {
+  background: white;
+  position: absolute;
+  width: 10px;
+  height: 150px;
+}
+
+#left-paddle {
+  left: 20px;
+}
+
+#right-paddle {
+  right: 20px;
+}
+
+#net {
+  background: white;
+  position: absolute;
+  top: 0px;
+  width: 2px;
+}
+
+#ball {
+  background: white;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+#left-score, #right-score {
+  color: white;
+  font-family: sans-serif;
+  font-size: 4rem;
+  position: absolute;
+  top: 50px;
+  width: 30px;
+  height: 30px;
+}

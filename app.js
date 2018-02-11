@@ -42,13 +42,17 @@ const handleKeyPresses = () => {
 
   if (keyStore['38'] && rightPaddlePos > 0) {
     document.getElementById("right-paddle").style.top = `${parseInt(rightPaddlePos)-60}px`;
+    keyStore['38'] = false;
   } else if (keyStore['40'] && rightPaddlePos < windowHeight - 150) {
     document.getElementById("right-paddle").style.top = `${parseInt(rightPaddlePos)+60}px`;
+    keyStore['40'] = false;
   }
   if (keyStore['87'] && leftPaddlePos > 0) {
     document.getElementById("left-paddle").style.top = `${parseInt(leftPaddlePos)-60}px`;
+    keyStore['87'] = false;
   } else if (keyStore['83'] && leftPaddlePos < windowHeight - 150) {
     document.getElementById("left-paddle").style.top = `${parseInt(leftPaddlePos)+60}px`;
+    keyStore['83'] = false;
   }
 }
 

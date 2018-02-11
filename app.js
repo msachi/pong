@@ -30,21 +30,27 @@ window.onload = function() {
   window.requestAnimationFrame(step)
 };
 
-document.onkeydown = (e) => {
+const keyStore = {};
+
+window.onkeydown = window.onkeyup = (e) => {
+  keyStore[e.keyCode] = e.type === 'keydown';
+};
+
+const handleKeyPresses = () => {
   const leftPaddlePos = parseInt(document.getElementById("left-paddle").style.top);
   const rightPaddlePos = parseInt(document.getElementById("right-paddle").style.top);
 
-  if (e.keyCode == '38' && rightPaddlePos > 0) {
+  if (keyStore['38'] && rightPaddlePos > 0) {
     document.getElementById("right-paddle").style.top = `${parseInt(rightPaddlePos)-60}px`;
-  } else if (e.keyCode == '40' && rightPaddlePos < windowHeight - 150) {
+  } else if (keyStore['40'] && rightPaddlePos < windowHeight - 150) {
     document.getElementById("right-paddle").style.top = `${parseInt(rightPaddlePos)+60}px`;
   }
-  if (e.keyCode == '87' && leftPaddlePos > 0) {
+  if (keyStore['87'] && leftPaddlePos > 0) {
     document.getElementById("left-paddle").style.top = `${parseInt(leftPaddlePos)-60}px`;
-  } else if (e.keyCode == '83' && leftPaddlePos < windowHeight - 150) {
+  } else if (keyStore['83'] && leftPaddlePos < windowHeight - 150) {
     document.getElementById("left-paddle").style.top = `${parseInt(leftPaddlePos)+60}px`;
   }
-};
+}
 
 const step = () => {
   detectCollisionOrEscape();
@@ -52,6 +58,7 @@ const step = () => {
   handleEscapes();
   changeCoords();
   changeBallPosition();
+  handleKeyPresses();
   window.requestAnimationFrame(step);
 };
 
